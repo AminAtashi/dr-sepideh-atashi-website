@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دکتر سپیده آتشی | جراح زیبایی بینی شیراز</title>
+    <title>دکتر سپیده آتشی | جراح زیبایی بینی</title>
+
+    <!-- Modern Persian Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
@@ -11,7 +15,7 @@
 
 <body>
 
-    <!-- 🔥 Sticky Navbar -->
+    <!-- NAV -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">دکتر سپیده آتشی</div>
@@ -19,30 +23,22 @@
                 <li><a href="#about">معرفی</a></li>
                 <li><a href="#services">خدمات</a></li>
                 <li><a href="#beforeafter">قبل و بعد</a></li>
-                <li><a href="#faq">سوالات</a></li>
+                <li><a href="#gallery">گالری</a></li>
                 <li><a href="#contact">تماس</a></li>
             </ul>
             <a href="#consult" class="nav-cta">مشاوره آنلاین</a>
         </div>
     </nav>
 
-    <!-- 🔥 Hero Section -->
-    <header class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">جراحی بینی طبیعی، متناسب با چهره شما ✨</h1>
-            <p class="hero-subtitle">
-                تجربه‌ای متفاوت از زیبایی، با خانم دکتر سپیده آتشی
-            </p>
-            <a href="#consult" class="hero-btn">درخواست مشاوره</a>
-        </div>
-    </header>
+    <!-- HERO (Auto Loaded) -->
+    <header id="hero" class="hero"></header>
 
-    <!-- 🔥 About Section -->
+    <!-- ABOUT -->
     <section id="about" class="section fade">
         <h2 class="section-title">معرفی دکتر</h2>
+
         <div class="about-container">
-            <img src="dr-sepideh-atashi.jpg" alt="دکتر سپیده آتشی">
+            <img src="images/profile.jpg" alt="دکتر سپیده آتشی">
             <p>
                 خانم دکتر سپیده آتشی، متخصص گوش، حلق و بینی و جراح زیبایی با سال‌ها تجربه
                 در زمینه جراحی بینی، اصلاح انحراف، جوانسازی و زیبایی صورت فعالیت می‌کنند.
@@ -50,7 +46,7 @@
         </div>
     </section>
 
-    <!-- 🔥 Services Section -->
+    <!-- SERVICES -->
     <section id="services" class="section fade">
         <h2 class="section-title">خدمات زیبایی</h2>
         <div class="services-grid">
@@ -58,18 +54,24 @@
             <div class="service-card">تزریق بوتاکس</div>
             <div class="service-card">فیلر و کانتور صورت</div>
             <div class="service-card">لیفت صورت و گردن</div>
-            <div class="service-card">جراحی پلک (بلفاروپلاستی)</div>
+            <div class="service-card">جراحی پلک</div>
             <div class="service-card">اصلاح انحراف بینی</div>
         </div>
     </section>
 
-    <!-- 🔥 Placeholder – Before/After slider (Will add next!) -->
+    <!-- BEFORE/AFTER (AUTO GENERATED) -->
     <section id="beforeafter" class="section fade">
         <h2 class="section-title">قبل و بعد</h2>
-        <p>این بخش به صورت اسلایدر حرفه‌ای اضافه می‌شود…</p>
+        <div id="beforeAfterContainer" class="before-after-wrapper"></div>
     </section>
 
-    <!-- 🔥 Contact Section -->
+    <!-- GALLERY (AUTO GENERATED) -->
+    <section id="gallery" class="section fade">
+        <h2 class="section-title">گالری تصاویر</h2>
+        <div id="galleryContainer" class="gallery-grid"></div>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact" class="section fade">
         <h2 class="section-title">تماس و آدرس</h2>
         <div class="contact-info">
