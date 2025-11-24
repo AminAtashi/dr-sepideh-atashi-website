@@ -1,53 +1,88 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> دکتر سپیده آتشی - جراح بینی شیراز</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <title>دکتر سپیده آتشی | جراح زیبایی بینی شیراز</title>
+
+    <link rel="stylesheet" href="luxury.css">
+    <script defer src="luxury.js"></script>
 </head>
+
 <body>
 
-    <header>
-        <h1> دکتر سپیده آتشی</h1>
-        <h2>جراح بینی شیراز | متخصص گوش، حلق و بینی</h2>
-        <p class="tagline">ما را انتخاب کن و تبدیل به ورژن جذاب‌تر خودت شو! ✨</p>
+    <!-- 🔥 Sticky Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">دکتر سپیده آتشی</div>
+            <ul class="nav-links">
+                <li><a href="#about">معرفی</a></li>
+                <li><a href="#services">خدمات</a></li>
+                <li><a href="#beforeafter">قبل و بعد</a></li>
+                <li><a href="#faq">سوالات</a></li>
+                <li><a href="#contact">تماس</a></li>
+            </ul>
+            <a href="#consult" class="nav-cta">مشاوره آنلاین</a>
+        </div>
+    </nav>
+
+    <!-- 🔥 Hero Section -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">جراحی بینی طبیعی، متناسب با چهره شما ✨</h1>
+            <p class="hero-subtitle">
+                تجربه‌ای متفاوت از زیبایی، با خانم دکتر سپیده آتشی
+            </p>
+            <a href="#consult" class="hero-btn">درخواست مشاوره</a>
+        </div>
     </header>
 
-    <section id="about" class="fade-in">
-        <img src="dr-sepideh-atashi.jpg" alt="Dr. Sepideh Atashi">
-        <p>دکتر سپیده آتشی، متخصص گوش، حلق و بینی و جراح زیبایی با سال‌ها تجربه در زمینه زیبایی و جوانسازی، خدماتی بی‌نظیر را به شما ارائه می‌دهد.</p>
+    <!-- 🔥 About Section -->
+    <section id="about" class="section fade">
+        <h2 class="section-title">معرفی دکتر</h2>
+        <div class="about-container">
+            <img src="dr-sepideh-atashi.jpg" alt="دکتر سپیده آتشی">
+            <p>
+                خانم دکتر سپیده آتشی، متخصص گوش، حلق و بینی و جراح زیبایی با سال‌ها تجربه
+                در زمینه جراحی بینی، اصلاح انحراف، جوانسازی و زیبایی صورت فعالیت می‌کنند.
+            </p>
+        </div>
     </section>
 
-    <section id="services" class="fade-in">
-        <h2>خدمات زیبایی</h2>
-        <ul>
-            <li class="service-item">جراحی زیبایی بینی (رینوپلاستی)</li>
-            <li class="service-item">تزریق بوتاکس و فیلر</li>
-            <li class="service-item">لیفت صورت و گردن</li>
-            <li class="service-item">اصلاح انحراف بینی</li>
-            <li class="service-item">جراحی پلک (بلفاروپلاستی)</li>
-        </ul>
+    <!-- 🔥 Services Section -->
+    <section id="services" class="section fade">
+        <h2 class="section-title">خدمات زیبایی</h2>
+        <div class="services-grid">
+            <div class="service-card">رینوپلاستی (جراحی بینی)</div>
+            <div class="service-card">تزریق بوتاکس</div>
+            <div class="service-card">فیلر و کانتور صورت</div>
+            <div class="service-card">لیفت صورت و گردن</div>
+            <div class="service-card">جراحی پلک (بلفاروپلاستی)</div>
+            <div class="service-card">اصلاح انحراف بینی</div>
+        </div>
     </section>
 
-    <section id="appointment" class="fade-in">
-        <h2>ساعات حضور</h2>
-        <p>دکتر آتشی در روزهای <strong>یکشنبه</strong> و <strong>سه‌شنبه</strong> عصر در مطب حضور دارند.</p>
+    <!-- 🔥 Placeholder – Before/After slider (Will add next!) -->
+    <section id="beforeafter" class="section fade">
+        <h2 class="section-title">قبل و بعد</h2>
+        <p>این بخش به صورت اسلایدر حرفه‌ای اضافه می‌شود…</p>
     </section>
 
-    <section id="contact" class="fade-in">
-        <h2>تماس و آدرس</h2>
-        <p>📞 تلفن: <a href="tel:+989177500987">09177500987</a></p>
-        <p>📍 آدرس: معالی آباد، ساختمان آوا، واحد ۷۵</p>
-        <p>📷 اینستاگرام: <a href="https://www.instagram.com/dr.sepideh.atashi/" target="_blank">@dr.sepideh.atashi</a></p>
+    <!-- 🔥 Contact Section -->
+    <section id="contact" class="section fade">
+        <h2 class="section-title">تماس و آدرس</h2>
+        <div class="contact-info">
+            <p>📞 <a href="tel:+989177500987">0917-750-0987</a></p>
+            <p>📍 معالی‌آباد، ساختمان آوا، واحد ۷۵</p>
+            <p>📷 <a href="https://www.instagram.com/dr.sepideh.atashi" target="_blank">اینستاگرام</a></p>
+        </div>
     </section>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollTopBtn">🔝</button>
+    <button id="scrollTopBtn">⬆</button>
 
     <footer>
-        <p>© 2025 تمامی حقوق محفوظ است.</p>
+        © 2025 | تمامی حقوق متعلق به دکتر سپیده آتشی است.
     </footer>
 
 </body>
