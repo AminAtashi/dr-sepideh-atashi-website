@@ -1,23 +1,18 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    console.log("Loading dynamic website...");
+    console.log("Website loading...");
 
-    /* -----------------------------------------------------------
-       LOAD images.json
-    ----------------------------------------------------------- */
+    /** LOAD images.json **/
     let data;
     try {
-        data = await fetch("images/images.json").then(res => res.json());
-    } catch (e) {
-        console.error("Error loading images.json", e);
+        data = await fetch("images/images.json").then(r => r.json());
+    } catch (err) {
+        console.error("Cannot load images.json", err);
         return;
     }
 
-    /* -----------------------------------------------------------
-       HERO SLIDER
-    ----------------------------------------------------------- */
+    /** HERO SLIDER **/
     const heroBg = document.querySelector(".hero-bg");
-
-    if (data.hero && data.hero.length > 0) {
+    if (data.hero?.length) {
         let index = 0;
         heroBg.style.backgroundImage = `url("images/${data.hero[0]}")`;
 
@@ -31,14 +26,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }, 5000);
     }
 
-    
-
-    /* -----------------------------------------------------------
-       BEFORE/AFTER SECTION
-    ----------------------------------------------------------- */
+    /** BEFORE / AFTER **/
     const baContainer = document.getElementById("beforeafter-slider");
 
-    if (data.beforeafter && baContainer) {
+    if (data.beforeafter) {
         data.beforeafter.forEach(item => {
             const box = document.createElement("div");
             box.className = "ba-box";
@@ -47,59 +38,44 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <div class="ba-inner">
                     <div class="ba-side">
                         <h3>قبل</h3>
-                        <img src="images/${item.before}" alt="Before">
+                        <img src="images/${item.before}">
                     </div>
+
                     <div class="ba-side">
                         <h3>بعد</h3>
-                        <img src="images/${item.after}" alt="After">
+                        <img src="images/${item.after}">
                     </div>
                 </div>
             `;
-
             baContainer.appendChild(box);
         });
     }
 
-    /* -----------------------------------------------------------
-       GALLERY SECTION
-    ----------------------------------------------------------- */
+    /** GALLERY **/
     const gallery = document.getElementById("gallery-grid");
 
-    if (data.gallery && gallery) {
+    if (data.gallery) {
         data.gallery.forEach(img => {
             const div = document.createElement("div");
             div.className = "gallery-item";
+
             div.innerHTML = `<img src="images/${img}" loading="lazy">`;
             gallery.appendChild(div);
         });
     }
 
-    /* -----------------------------------------------------------
-       SCROLL TO TOP
-    ----------------------------------------------------------- */
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-
+    /** SCROLL TO TOP **/
+    const scrollBtn = document.getElementById("scrollTopBtn");
     window.addEventListener("scroll", () => {
-        scrollTopBtn.style.opacity = window.scrollY > 300 ? 1 : 0;
+        scrollBtn.style.opacity = window.scrollY > 300 ? 1 : 0;
+    });
+    scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    scrollTopBtn.addEventListener("click", () =>
-        window.scrollTo({ top: 0, behavior: "smooth" })
-    );
-});
-// MOBILE MENU TOGGLE
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
-
-menuToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("open");
 });
 
-// MOBILE MENU TOGGLE
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
-
-menuToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("open");
+/*** MOBILE MENU TOGGLE ***/
+document.getElementById("menuToggle").addEventListener("click", () => {
+    document.getElementById("navMenu").classList.toggle("open");
 });
-
