@@ -1,10 +1,20 @@
 {
-  "hero": ["hero-1.jpg", "hero-2.jpg"],
-  "beforeafter": [
-    { "before": "before-1.jpg", "after": "after-1.jpg" }
+  "hero": [
+    "hero-1.jpg",
+    "hero-2.jpg"
   ],
+
+  "beforeafter": [
+    {
+      "before": "before-1.jpg",
+      "after": "after-1.jpg"
+    }
+  ],
+
   "gallery": [
-    "gallery-1.jpg",
-    "gallery-2.jpg"
+    "hero-1.jpg",
+    "hero-2.jpg",
+    "before-1.jpg",
+    "after-1.jpg"
   ]
 }
