@@ -1,69 +1,87 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    console.log("Loading dynamic beauty website…");
+    console.log("Loading dynamic website...");
 
-    const data = await fetch("images/images.json").then(res => res.json());
+    /* -----------------------------------------------------------
+       LOAD images.json
+    ----------------------------------------------------------- */
+    let data;
+    try {
+        data = await fetch("images/images.json").then(res => res.json());
+    } catch (e) {
+        console.error("Error loading images.json", e);
+        return;
+    }
 
-    /* ---------------------------------------------------------
-        HERO SLIDER
-    --------------------------------------------------------- */
-    const heroEl = document.querySelector(".hero-bg");
+    /* -----------------------------------------------------------
+       HERO SLIDER
+    ----------------------------------------------------------- */
+    const heroBg = document.querySelector(".hero-bg");
 
     if (data.hero && data.hero.length > 0) {
-        let i = 0;
-        heroEl.style.backgroundImage = `url('images/${data.hero[0]}')`;
+        let index = 0;
+        heroBg.style.backgroundImage = `url("images/${data.hero[0]}")`;
 
         setInterval(() => {
-            i = (i + 1) % data.hero.length;
-            heroEl.style.backgroundImage = `url('images/${data.hero[i]}')`;
+            index = (index + 1) % data.hero.length;
+            heroBg.style.opacity = 0;
+            setTimeout(() => {
+                heroBg.style.backgroundImage = `url("images/${data.hero[index]}")`;
+                heroBg.style.opacity = 1;
+            }, 500);
         }, 5000);
     }
 
-    /* ---------------------------------------------------------
-        BEFORE/AFTER SLIDER
-    --------------------------------------------------------- */
+    /* -----------------------------------------------------------
+       BEFORE/AFTER SECTION
+    ----------------------------------------------------------- */
     const baContainer = document.getElementById("beforeafter-slider");
 
-    if (baContainer && data.beforeafter) {
-        data.beforeafter.forEach((item, idx) => {
-            const block = document.createElement("div");
-            block.className = "ba-box";
+    if (data.beforeafter && baContainer) {
+        data.beforeafter.forEach(item => {
+            const box = document.createElement("div");
+            box.className = "ba-box";
 
-            block.innerHTML = `
-                <div class="ba-wrapper">
-                    <img class="ba-before" src="images/${item.before}">
-                    <div class="ba-divider"></div>
-                    <img class="ba-after" src="images/${item.after}">
+            box.innerHTML = `
+                <div class="ba-inner">
+                    <div class="ba-side">
+                        <h3>قبل</h3>
+                        <img src="images/${item.before}" alt="Before">
+                    </div>
+                    <div class="ba-side">
+                        <h3>بعد</h3>
+                        <img src="images/${item.after}" alt="After">
+                    </div>
                 </div>
             `;
 
-            baContainer.appendChild(block);
+            baContainer.appendChild(box);
         });
     }
 
-    /* ---------------------------------------------------------
-        GALLERY
-    --------------------------------------------------------- */
-    const galleryEl = document.getElementById("gallery-grid");
+    /* -----------------------------------------------------------
+       GALLERY SECTION
+    ----------------------------------------------------------- */
+    const gallery = document.getElementById("gallery-grid");
 
-    if (galleryEl && data.gallery) {
+    if (data.gallery && gallery) {
         data.gallery.forEach(img => {
-            const el = document.createElement("div");
-            el.className = "gallery-item";
-            el.innerHTML = `<img src="images/${img}" loading="lazy">`;
-            galleryEl.appendChild(el);
+            const div = document.createElement("div");
+            div.className = "gallery-item";
+            div.innerHTML = `<img src="images/${img}" loading="lazy">`;
+            gallery.appendChild(div);
         });
     }
 
-    /* ---------------------------------------------------------
-        SCROLL TO TOP BUTTON
-    --------------------------------------------------------- */
+    /* -----------------------------------------------------------
+       SCROLL TO TOP
+    ----------------------------------------------------------- */
     const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-    window.addEventListener("scroll", function () {
-        scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    window.addEventListener("scroll", () => {
+        scrollTopBtn.style.opacity = window.scrollY > 300 ? 1 : 0;
     });
 
-    scrollTopBtn.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    scrollTopBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" })
+    );
 });
