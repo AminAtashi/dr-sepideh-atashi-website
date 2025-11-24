@@ -1,23 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("سایت دکتر سپیده آتشی بارگذاری شد.");
 
-    // Fade In on scroll
-    const fades = document.querySelectorAll(".fade");
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) e.target.classList.add("visible");
-        });
-    }, { threshold: 0.2 });
+    // انیمیشن fade-in روی سکشن‌ها
+    const fadeSections = document.querySelectorAll(".fade");
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        },
+        { threshold: 0.2 }
+    );
+    fadeSections.forEach(sec => observer.observe(sec));
 
-    fades.forEach(sec => observer.observe(sec));
-
-    // Scroll Top
-    const btn = document.getElementById("scrollTopBtn");
+    // دکمه اسکرول به بالا
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
     window.addEventListener("scroll", () => {
-        btn.style.display = window.scrollY > 350 ? "block" : "none";
+        scrollTopBtn.style.display = window.scrollY > 350 ? "block" : "none";
     });
-
-    btn.onclick = () => {
+    scrollTopBtn.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
+    });
 });
