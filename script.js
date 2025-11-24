@@ -1,38 +1,23 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("وبسایت دکتر سپیده آتشی با موفقیت بارگذاری شد!");
+document.addEventListener("DOMContentLoaded", () => {
 
-    // Smooth Scroll Effect for Sections
-    const fadeInSections = document.querySelectorAll(".fade-in");
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        },
-        { threshold: 0.2 }
-    );
-
-    fadeInSections.forEach((section) => {
-        observer.observe(section);
-    });
-
-    // Scroll to Top Button
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-    window.addEventListener("scroll", function () {
-        if (window.scrollY > 300) {
-            scrollTopBtn.style.display = "block";
-        } else {
-            scrollTopBtn.style.display = "none";
-        }
-    });
-
-    scrollTopBtn.addEventListener("click", function () {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
+    // Fade In on scroll
+    const fades = document.querySelectorAll(".fade");
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add("visible");
         });
+    }, { threshold: 0.2 });
+
+    fades.forEach(sec => observer.observe(sec));
+
+    // Scroll Top
+    const btn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+        btn.style.display = window.scrollY > 350 ? "block" : "none";
     });
+
+    btn.onclick = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
 });
