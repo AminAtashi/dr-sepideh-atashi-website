@@ -79,3 +79,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.getElementById("menuToggle").addEventListener("click", () => {
     document.getElementById("navMenu").classList.toggle("open");
 });
+
+// بستن منو با کلیک روی بیرون
+document.addEventListener("click", (e) => {
+    const menu = document.getElementById("navMenu");
+    const toggle = document.getElementById("menuToggle");
+
+    // اگر منو باز است و روی جایی غیر از منو و غیر از دکمه کلیک کردیم → منو ببند
+    if (menu.classList.contains("open") && !menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove("open");
+    }
+});
+
