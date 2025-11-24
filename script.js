@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }, 5000);
     }
 
+    
+
     /* -----------------------------------------------------------
        BEFORE/AFTER SECTION
     ----------------------------------------------------------- */
@@ -92,3 +94,12 @@ const navMenu = document.getElementById("navMenu");
 menuToggle.addEventListener("click", () => {
     navMenu.classList.toggle("open");
 });
+
+// MOBILE MENU TOGGLE
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+
+menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("open");
+});
+
