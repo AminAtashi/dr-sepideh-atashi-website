@@ -1,65 +1,69 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    console.log("Loading dynamic beauty website…");
 
-    const IMAGE_PATH = "images/";
+    const data = await fetch("images/images.json").then(res => res.json());
 
-    // Fetch file list from GitHub Pages directory
-    async function getImages() {
-        const response = await fetch(IMAGE_PATH);
-        const text = await response.text();
+    /* ---------------------------------------------------------
+        HERO SLIDER
+    --------------------------------------------------------- */
+    const heroEl = document.querySelector(".hero-bg");
 
-        // Extract file names from HTML listing
-        return [...text.matchAll(/href="([^"]+\.(jpg|jpeg|png|webp))"/g)]
-            .map(m => m[1]);
+    if (data.hero && data.hero.length > 0) {
+        let i = 0;
+        heroEl.style.backgroundImage = `url('images/${data.hero[0]}')`;
+
+        setInterval(() => {
+            i = (i + 1) % data.hero.length;
+            heroEl.style.backgroundImage = `url('images/${data.hero[i]}')`;
+        }, 5000);
     }
 
-    const images = await getImages();
+    /* ---------------------------------------------------------
+        BEFORE/AFTER SLIDER
+    --------------------------------------------------------- */
+    const baContainer = document.getElementById("beforeafter-slider");
 
-    // HERO (Pick hero-*.jpg)
-    const heroImg = images.find(img => img.startsWith("hero-"));
-    if (heroImg) {
-        document.getElementById("hero").style.backgroundImage =
-            `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.55)), url('${IMAGE_PATH}${heroImg}')`;
-    }
+    if (baContainer && data.beforeafter) {
+        data.beforeafter.forEach((item, idx) => {
+            const block = document.createElement("div");
+            block.className = "ba-box";
 
-    // BEFORE/AFTER
-    const beforeAfterContainer = document.getElementById("beforeAfterContainer");
-
-    const beforeImages = images.filter(img => img.startsWith("before-"));
-    beforeImages.forEach(before => {
-        const id = before.split("-")[1].split(".")[0];
-        const after = images.find(img => img === `after-${id}.jpg`);
-
-        if (after) {
-            beforeAfterContainer.innerHTML += `
-                <div class="ba-item">
-                    <div class="ba-wrapper">
-                        <img src="${IMAGE_PATH}${before}" class="ba-before">
-                        <div class="ba-after-wrapper">
-                            <img src="${IMAGE_PATH}${after}" class="ba-after">
-                        </div>
-                        <input type="range" min="0" max="100" value="50" class="slider">
-                    </div>
+            block.innerHTML = `
+                <div class="ba-wrapper">
+                    <img class="ba-before" src="images/${item.before}">
+                    <div class="ba-divider"></div>
+                    <img class="ba-after" src="images/${item.after}">
                 </div>
             `;
-        }
-    });
 
-    // SLIDER FUNCTIONALITY
-    document.querySelectorAll(".slider").forEach(slider => {
-        slider.addEventListener("input", e => {
-            const val = e.target.value;
-            e.target.previousElementSibling.style.width = `${val}%`;
+            baContainer.appendChild(block);
         });
+    }
+
+    /* ---------------------------------------------------------
+        GALLERY
+    --------------------------------------------------------- */
+    const galleryEl = document.getElementById("gallery-grid");
+
+    if (galleryEl && data.gallery) {
+        data.gallery.forEach(img => {
+            const el = document.createElement("div");
+            el.className = "gallery-item";
+            el.innerHTML = `<img src="images/${img}" loading="lazy">`;
+            galleryEl.appendChild(el);
+        });
+    }
+
+    /* ---------------------------------------------------------
+        SCROLL TO TOP BUTTON
+    --------------------------------------------------------- */
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", function () {
+        scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
     });
 
-    // GALLERY: gallery-*.jpg
-    const galleryContainer = document.getElementById("galleryContainer");
-    const galleryImages = images.filter(img => img.startsWith("gallery-"));
-
-    galleryImages.forEach(img => {
-        galleryContainer.innerHTML += `
-            <img src="${IMAGE_PATH}${img}" class="gallery-item">
-        `;
+    scrollTopBtn.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
-
 });
