@@ -85,3 +85,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         window.scrollTo({ top: 0, behavior: "smooth" })
     );
 });
+// MOBILE MENU TOGGLE
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+
+menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("open");
+});
