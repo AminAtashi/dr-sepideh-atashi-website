@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دکتر سپیده آتشی | جراح زیبایی بینی</title>
 
-    <!-- Modern Persian Fonts -->
+    <!-- فونت فارسی مدرن -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
@@ -30,18 +30,28 @@
         </div>
     </nav>
 
-    <!-- HERO (Auto Loaded) -->
-    <header id="hero" class="hero"></header>
+    <!-- HERO (عکس پس‌زمینه به صورت داینامیک از images.json) -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">جراحی بینی طبیعی، متناسب با چهره شما ✨</h1>
+            <p class="hero-subtitle">
+                تجربه‌ای متفاوت از زیبایی با خانم دکتر سپیده آتشی، متخصص گوش، حلق و بینی و جراح زیبایی
+            </p>
+            <a href="#consult" class="hero-btn">درخواست مشاوره</a>
+        </div>
+    </header>
 
     <!-- ABOUT -->
     <section id="about" class="section fade">
         <h2 class="section-title">معرفی دکتر</h2>
 
         <div class="about-container">
-            <img src="images/profile.jpg" alt="دکتر سپیده آتشی">
+            <!-- از فایل موجود در روت ریپو استفاده می‌کنیم -->
+            <img src="dr-sepideh-atashi.jpg" alt="دکتر سپیده آتشی">
             <p>
-                خانم دکتر سپیده آتشی، متخصص گوش، حلق و بینی و جراح زیبایی با سال‌ها تجربه
-                در زمینه جراحی بینی، اصلاح انحراف، جوانسازی و زیبایی صورت فعالیت می‌کنند.
+                خانم دکتر سپیده آتشی، متخصص گوش، حلق و بینی و جراح زیبایی با سال‌ها تجربه در زمینه
+                جراحی بینی، اصلاح انحراف بینی، جوانسازی و زیبایی صورت فعالیت می‌کنند.
             </p>
         </div>
     </section>
@@ -59,16 +69,16 @@
         </div>
     </section>
 
-    <!-- BEFORE/AFTER (AUTO GENERATED) -->
+    <!-- BEFORE/AFTER (AUTO GENERATED از images.json) -->
     <section id="beforeafter" class="section fade">
         <h2 class="section-title">قبل و بعد</h2>
-        <div id="beforeAfterContainer" class="before-after-wrapper"></div>
+        <div id="beforeafter-slider" class="ba-container"></div>
     </section>
 
-    <!-- GALLERY (AUTO GENERATED) -->
+    <!-- GALLERY (AUTO GENERATED از images.json) -->
     <section id="gallery" class="section fade">
         <h2 class="section-title">گالری تصاویر</h2>
-        <div id="galleryContainer" class="gallery-grid"></div>
+        <div id="gallery-grid" class="gallery-grid"></div>
     </section>
 
     <!-- CONTACT -->
@@ -79,6 +89,14 @@
             <p>📍 معالی‌آباد، ساختمان آوا، واحد ۷۵</p>
             <p>📷 <a href="https://www.instagram.com/dr.sepideh.atashi" target="_blank">اینستاگرام</a></p>
         </div>
+    </section>
+
+    <!-- (اختیاری) سکشن مشاوره آنلاین برای لینک منو -->
+    <section id="consult" class="section fade">
+        <h2 class="section-title">مشاوره آنلاین</h2>
+        <p style="text-align:center;">
+            برای دریافت مشاوره اولیه، لطفاً از طریق تماس تلفنی یا دایرکت اینستاگرام پیام ارسال کنید.
+        </p>
     </section>
 
     <button id="scrollTopBtn">⬆</button>
